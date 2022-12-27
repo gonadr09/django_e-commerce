@@ -1,0 +1,24 @@
+{% extends "ProyectoWebApp/base.html" %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container my-4 d-flex flex-column align-items-center">
+    <div style="width: 75%">
+        {% if "valido" in request.GET %}
+        <h3>Gracias por contactarte con nosotros</h3>
+        <p>Te responderemos a la brevedad.</p>
+        {% else %}
+        <h1 class="text-center mb-4">Formulario de Contacto</h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table class="mx-auto">{{ formulario|crispy }}</table>
+            <input class="btn btn-primary mt-2" type="submit" value="Enviar"
+                style="display: grid; place-content: center; margin: auto;">
+        </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

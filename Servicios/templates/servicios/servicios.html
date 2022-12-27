@@ -1,0 +1,25 @@
+{% extends "ProyectoWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<h1 class="mt-4 text-center">Servicios destacados</h1>
+
+<div class="container d-flex flex-column align-items-center">
+
+  {% for servicio in servicios %}
+
+  <div class="col-6 my-5">
+    <div class="card-body mb-3">
+      <h3 class="card-title">{{ servicio.titulo }}</h3>
+      <p class="card-text">{{ servicio.contenido}}</p>
+    </div>
+    <img src="{{ servicio.imagen.url }}" class="card-img-top" alt="...">
+  </div>
+
+  {% endfor %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "ProyectoWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<h1 class="text-center mt-4">Página de Blog</h1>
+
+<div class="">
+    <p style="text-align: center;">Categorías:
+        {% for categoria in categorias %}
+        - <a class="link_categoria" href="{% url 'categoria' categoria.id %}">{{ categoria }}</a>
+        {% endfor %}
+    </p>
+</div>
+
+<div class="container d-flex flex-column align-items-center gap-5 my-5">
+    {% for post in posts %}
+    <div class="card" style="max-width: 80%;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ post.imagen.url }}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="card-title">{{ post.titulo }}</h3>
+                    <p class="card-text">{{ post.contenido}}</p>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            <span>Creado en: {{ post.created }}</span><br>
+                            <span>Autor: {{ post.autor }}</span><br>
+                            <span>Categorías: </span>
+                            {% for categoria in post.categorias.all %}
+                            <span> {{ categoria }}</span>
+                            {% endfor %}
+                        </small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

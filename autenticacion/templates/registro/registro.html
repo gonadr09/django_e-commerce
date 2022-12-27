@@ -1,0 +1,25 @@
+{% extends "ProyectoWebApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<div class="container my-4 d-flex flex-column align-items-center">
+    <div style="width: 50%">
+        <h1 class="mb-3 text-center">Registrarse</h1>
+
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{form|crispy }}
+            <div class="d-flex flex-column align-items-center mt-3">
+                <button type="submit" class="btn btn-primary m-auto">Registrarse</button>
+
+            </div>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}
